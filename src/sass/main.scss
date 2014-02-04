@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+@import "compass";
+
+// import base setting files.
+@import "base/value";
+@import "base/function";
+
+// mixin
+@import "base/mixin/prefix";
+@import "base/mixin/sub";
+@import "base/mixin/position";
+@import "base/mixin/sprite";
+@import "base/mixin/text";
+@import "base/mixin/legacy";
+@import "base/mixin/counter";
+
+@import "base/placeholder";
+
+// rest
+@import "base/reset";
+
+// import common style
+@import "common/layout";
+@import "common/modal";

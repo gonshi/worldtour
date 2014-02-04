@@ -1,0 +1,6 @@
+//////////////////////////////////////////////////////
+// defined functions
+
+@function fz($size, $base:$baseFontSize) {
+    @return percentage($size/$base);
+}

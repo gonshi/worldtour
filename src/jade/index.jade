@@ -1,0 +1,10 @@
+extends /layout/_application
+block title
+  title HelloWorld
+block body
+  #wrapper
+    main.main-content
+      p hello world
+      p= dummy.text
+
+      include:markdown /markdown/sample.md

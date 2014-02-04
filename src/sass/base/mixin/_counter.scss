@@ -1,0 +1,20 @@
+////////////////////////////////////////
+// Counter
+////////////////////////////////////////
+@mixin resetCounter($name, $int: 0) {
+    counter-reset: $name $int;
+    list-style-type: none;
+}
+
+@mixin addCounter($name, $before: '', $after: '', $int: 1) {
+    &:before {
+        counter-increment: $name $int;
+        content: "#{$before}"counter($name)"#{$after}";
+    }
+}
+@mixin addCounters($name, $before: '', $after: '', $split: '.', $int: 1) {
+    &:before {
+        counter-increment: $name $int;
+        content: "#{$before}"counters($name, $split)"#{$after}";
+    }
+}
