@@ -196,9 +196,9 @@ module.exports = function(grunt) {
             options: {
                 dirs: ['src/**'],
                 livereload: {
-                    enabled: true,
+                    enabled: false,
                     port: 35729,
-                    extensions: [ 'js', 'css', 'jade']
+                    extensions: [ 'html', 'css', 'js']
                 }
             },
             jade: function(path) {
@@ -208,6 +208,12 @@ module.exports = function(grunt) {
                 } else {
                     files[0].src = '**/!(_)*.jade';
                 }
+                grunt.config.set(['jade', 'compile', 'files'], files);
+                return ['jade:compile'];
+            },
+            md: function() {
+                var files = grunt.config.get('jade.compile.files').slice();
+                files[0].src = '**/!(_)*.jade';
                 grunt.config.set(['jade', 'compile', 'files'], files);
                 return ['jade:compile'];
             },
