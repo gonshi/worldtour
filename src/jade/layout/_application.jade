@@ -14,7 +14,7 @@ html(lang='ja')
     block body
 
     block scripts
-      each lib in libs
+      each val in libs
         script(src=val)
       if prod
         script(src='/js/app.min.js')
