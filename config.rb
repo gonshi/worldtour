@@ -14,8 +14,12 @@
 http_path = (environment == :production)? "/": "/"
 css_dir = (environment == :production)? "dist/css": ".tmp/css"
 sass_dir = "src/sass"
-images_dir = (environment == :production)? "src/img": "src/img"
-javascripts_dir = "dist/js"
+images_dir = (environment == :production)? "dist/img": ".tmp/img"
+http_images_path = "/img"
+generated_images_dir = (environment == :production)? "dist/img" : ".tmp/img"
+http_generated_images_path = "/img"
+
+
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed

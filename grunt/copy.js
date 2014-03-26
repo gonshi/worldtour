@@ -20,7 +20,7 @@ module.exports = {
             expand: true,
             cwd: '<%= config.dir.src %>/img',
             src:['**/*'],
-            dest: '<%= config.dir.tmp %>/'
+            dest: '<%= config.dir.tmp %>/img'
         }]
     },
     imgProd: {
@@ -28,7 +28,7 @@ module.exports = {
             expand: true,
             cwd: '<%= config.dir.src %>/img',
             src:['**/*'],
-            dest: '<%= config.dir.dist %>/'
+            dest: '<%= config.dir.dist %>/img'
         }]
     }
 };
