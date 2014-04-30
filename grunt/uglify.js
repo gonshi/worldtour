@@ -1,7 +1,7 @@
 module.exports = {
     options: {
         mangle: {
-            except: ['$', '_', 'minikulove']
+            except: ['$', '_', 'namespace']
         }
     },
     apps: {
