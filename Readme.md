@@ -65,4 +65,5 @@ bowerのヘルパータスクです。bower.jsonに基づいて、/src/js/lib以
 
 ## 更新履歴
 
+- 2014/06/16 node_moduleを更新
 - 2014/02/28 gruntのタスクを修正
