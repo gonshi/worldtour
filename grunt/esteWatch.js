@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
     return {
         options: {
-            dirs: ['src/**'],
+            dirs: ['src/**', '.tmp/*'],
             livereload: {
                 enabled: true,
                 port: 35729,
