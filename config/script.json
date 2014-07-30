@@ -1,11 +1,3 @@
 [
-    "/js/base/namespace.js",
-    "/js/base/browser.js",
-
-    "/js/event/event.js",
-
-    "/js/view/viewClass.js",
-
-
     "/js/main.js"
 ]
