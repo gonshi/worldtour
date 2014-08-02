@@ -12,12 +12,12 @@ form, fieldset, legend,
 table, th, td, caption, tbody, tfoot, thead,
 article, aside, figure, footer, header,
 hgroup, menu, nav, section, audio, video, canvas, main {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 article, aside, figure, figcaption,footer,
 h1, h2, h3, h4, h5, h6, header, hgroup, menu, nav, section, main {
-    display: block;
+	display: block;
 }
 
 /* --------------------------------------------------
@@ -26,48 +26,48 @@ h1, h2, h3, h4, h5, h6, header, hgroup, menu, nav, section, main {
 html { overflow-y: scroll; } /* for mozilla: always display scrollbar */
 
 html, body {
-    width: 100%;
-    min-height: 100%;
+	width: 100%;
+	min-height: 100%;
 }
 
 body {
-    position: relative;
-    color: $baseTextColor;
-    background: $baseBgColor;
-    font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
-    font-size: #{$baseFontSize}px;
-    *font-size: 82%;
-    line-height: 1.5;
+	position: relative;
+	color: $baseTextColor;
+	background: $baseBgColor;
+	font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+	font-size: #{$baseFontSize}px;
+	*font-size: 82%;
+	line-height: 1.5;
 }
 
 a {
-    &:link {
-        color: $baseLinkColor;
-        text-decoration: underline;
-    }
-    &:visited {
-        color: $baseVisitedColor;
-        text-decoration: underline;
-    }
-    &:hover {
-        color: $baseHoverColor;
-        text-decoration: none;
-    }
-    &:active  {
-        color: $baseActiveColor;
-        text-decoration: none;
-    }
+	&:link {
+		color: $baseLinkColor;
+		text-decoration: none;
+	}
+	&:visited {
+		color: $baseVisitedColor;
+		text-decoration: none;
+	}
+	&:hover {
+		color: $baseHoverColor;
+		text-decoration: none;
+	}
+	&:active  {
+		color: $baseActiveColor;
+		text-decoration: none;
+	}
 }
 
 /* --------------------------------------------------
     2. Heading, Paragraph
 -------------------------------------------------- */
 h1, h2, h3, h4, h5, h6 {
-    font-size: 100%;
+	font-size: 100%;
 }
 /* p {} */
 p {
-    line-height: 1.5;
+	line-height: 1.5;
 }
 /* --------------------------------------------------
     3. List
@@ -78,82 +78,83 @@ li { list-style: none; }
     4. Table
 -------------------------------------------------- */
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    font-size: 100%;
-    font-family: inherit;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 100%;
+	font-family: inherit;
 }
 caption, th, td {
-    text-align: left;
-    vertical-align: top;
-    font-weight: normal;
+	text-align: left;
+	vertical-align: top;
+	font-weight: normal;
 }
 
 /* --------------------------------------------------
-    5. Form
+	5. Form
 -------------------------------------------------- */
 fieldset { border: none; }
 input, textarea, select, label {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    font-size: 100%;
-    font-family: inherit;
-    vertical-align: middle;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: middle;
 }
 label { cursor: pointer; }
 textarea { overflow: auto; }
 legend { display: none; }
 
 /* --------------------------------------------------
-    6. pseudo element
+	6. pseudo element
 -------------------------------------------------- */
 
 ::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
+	background: #b3d4fc;
+	text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
-    text-shadow: none;
+	background: #b3d4fc;
+	text-shadow: none;
 }
 
 /* --------------------------------------------------
-    6. Other
+	6. Other
 -------------------------------------------------- */
 img {
-    border: none;
-    vertical-align: middle;
+	border: none;
+	vertical-align: middle;
 }
 object {
-    vertical-align: middle;
-    outline: none;
+	vertical-align: middle;
+	outline: none;
 }
 em {
-    font-style: italic;
+	font-style: italic;
 }
 strong {
-    font-weight: bold;
+	font-weight: bold;
 }
 small { font-size: 100%; }
 abbr, acronym {
-    border: none;
-    font-variant: normal;
+	border: none;
+	font-variant: normal;
 }
 q:before, q:after { content: ''; }
 address, caption, cite, code, dfn, var {
-    font-weight: normal;
-    font-style: normal;
+	font-weight: normal;
+	font-style: normal;
 }
 code, pre { font-family: monospace; }
 sup { vertical-align: text-top; }
 sub { vertical-align: text-bottom; }
 hr { display: none; }
 button {
-    border: none;
-    background: none;
+	border: none;
+	background: none;
+	cursor: pointer;
 }
 
 /* ------------------------------------------------------------
