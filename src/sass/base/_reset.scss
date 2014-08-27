@@ -14,6 +14,7 @@ article, aside, figure, footer, header,
 hgroup, menu, nav, section, audio, video, canvas, main {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 article, aside, figure, figcaption,footer,
 h1, h2, h3, h4, h5, h6, header, hgroup, menu, nav, section, main {
@@ -41,22 +42,8 @@ body {
 }
 
 a {
-	&:link {
-		color: $baseLinkColor;
-		text-decoration: none;
-	}
-	&:visited {
-		color: $baseVisitedColor;
-		text-decoration: none;
-	}
-	&:hover {
-		color: $baseHoverColor;
-		text-decoration: none;
-	}
-	&:active  {
-		color: $baseActiveColor;
-		text-decoration: none;
-	}
+	color: inherit;
+	text-decoration: none;
 }
 
 /* --------------------------------------------------

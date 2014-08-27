@@ -1,5 +1,6 @@
 (function(global, doc, $, ns, undefined) {
 	'use strict';
+	ns = ns || {};	
 
 	function EventDispatcher() {
 		this._events = {};
@@ -58,6 +59,6 @@
 		}
 	};
 
-	ns.GameStage.EventDispatcher = EventDispatcher;
-
-})(this, document, $, jQuery, this.namespace);
+	ns.EventDispatcher = EventDispatcher;
+	global.namespace;
+})(this, document, jQuery, this.namespace);
