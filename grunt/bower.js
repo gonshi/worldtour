@@ -2,7 +2,7 @@ var path = require('path');
 module.exports = {
     install: {
         options: {
-            targetDir: '<%= config.dir.src %>',
+            targetDir: '<%= config.dir.src %>/js/lib/',
             layout: function(type, component) {
                 var makeDir = true,
                     p = {
