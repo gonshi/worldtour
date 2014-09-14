@@ -1,1 +1,56 @@
+#wrapper{
+	position: relative;
+  width: 100%;
+  height: 100%;
+}
 
+#filter{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: image-url("filter.png") repeat;
+}
+
+#map{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 50%;
+	height: 50%;
+	opacity: 0;
+	@include single-transition(opacity, 0.5s, ease, 0s);
+	&.show{
+		opacity: 1;
+	}
+}
+
+.flag{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	img{
+		width: inherit;
+		height: inherit;
+	}
+}
+
+.slot{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	.firstLayer, .secondLayer, .thirdLayer{
+		width: 100%;
+		height: 33.3%;
+		cursor: pointer;
+		&.selected{
+			cursor: auto;
+		}
+	}
+}

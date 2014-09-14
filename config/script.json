@@ -1,3 +1,9 @@
 [
+		"/js/util/EventDispatcher.js",
+		"/js/util/Throttle.js",
+		"/js/controller/GetData.js",
+		"/js/controller/ClickHandler.js",
+		"/js/view/Slot.js",
+		"/js/view/showCountryContents.js",
     "/js/main.js"
 ]

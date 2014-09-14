@@ -23,5 +23,5 @@
   };
 
 	ns.Throttle = Throttle;
-  global.namespace = ns;
-})(this, document, jQuery, this.namespace);
+  global.kokki = ns;
+})(this, document, jQuery, this.kokki);

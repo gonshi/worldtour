@@ -60,5 +60,5 @@
 	};
 
 	ns.EventDispatcher = EventDispatcher;
-	global.namespace;
-})(this, document, jQuery, this.namespace);
+	global.kokki = ns;
+})(this, document, jQuery, this.kokki);
