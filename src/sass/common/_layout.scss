@@ -1,3 +1,4 @@
+// common
 #wrapper{
 	position: relative;
   width: 100%;
@@ -12,7 +13,9 @@
   height: 100%;
   background: image-url("filter.png") repeat;
 }
+//////////
 
+// map
 #map{
 	position: absolute;
 	top: 50%;
@@ -25,7 +28,9 @@
 		opacity: 1;
 	}
 }
+/////////////
 
+// flag
 .flag{
 	position: absolute;
 	top: 0;
@@ -38,7 +43,9 @@
 		height: inherit;
 	}
 }
+//////////////
 
+// slot
 .slot{
 	position: absolute;
 	top: 0;
@@ -54,3 +61,46 @@
 		}
 	}
 }
+///////////////
+
+//  countryName
+.countryName{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 50%;
+  font-size: 60px;
+  text-align: center;
+	opacity: 0;
+	@include single-transition(opacity, 0.5s, ease, 0s);
+	&.show{
+		opacity: 1;
+	}
+}
+/////////////////
+
+//  countryFlagWiki 
+.countryFlagWiki{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 50%;
+  height: 50%;
+
+  .sentence{
+    display: table-cell;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 24px;
+    text-align: center;
+    vertical-align: middle;
+    opacity: 0;
+    @include single-transition(opacity, 0.5s, ease, 0s);
+
+    &.show{
+      opacity: 1;
+    }
+  }
+}
+/////////////////

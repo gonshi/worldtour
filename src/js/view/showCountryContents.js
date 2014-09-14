@@ -1,9 +1,11 @@
 (function(global, doc, $, ns, undefined) {
-	'use strict';
-	ns = ns || {};
+  'use strict';
+  ns = ns || {};
   var $slot = $('.slot');
   var $flag = $('.flag');
   var $flagImg = $flag.find('img');
+  var $countryName = $('.countryName');
+  var $countryFlagWiki = $('.countryFlagWiki .sentence');
 
   /*
    * @param {number}newImgWidth, {number}newImgHeight, {number}duration(optional)
@@ -19,7 +21,7 @@
     var marginTop = 0;
     duration = duration || 1000;
 
-    if( winRatio >= imgRatio){ // win vertical length is longer than the img one
+    if( winRatio >= imgRatio ){ // win vertical length is longer than the img one
       imgTargetWidth = winWidth / 2;
       imgTargetHeight = imgTargetWidth * imgRatio;
       marginTop = ( winHeight / 2 - imgTargetHeight ) / 2;
@@ -55,8 +57,8 @@
     ////////////////////////////////
     
     function drawMap() {
-      var markerWaitTime = 1000;
-      var latlng = new global.google.maps.LatLng(ns.countryList[ns.nextNum].latlng[0], ns.countryList[ns.nextNum].latlng[1]);
+      var waitTime = 1000;
+      var latlng = new global.google.maps.LatLng(ns.countryList[ ns.nextNum ].latlng[0], ns.countryList[ ns.nextNum ].latlng[1]);
       var mapOptions = {
         center: latlng,
         zoom: 3,
@@ -71,9 +73,45 @@
           position: latlng,
           map: map
         });
-      }, markerWaitTime); 
+
+        showCountryName();
+        showCountryFlagWiki();
+      }, waitTime); 
+    }
+
+    function showCountryName(){
+      $countryName.
+        css({ 'line-height': ( winHeight / 2 ) + 'px' }).
+        text( ns.countryList[ ns.nextNum ].name ).
+        addClass('show');
+    }
+
+    function showCountryFlagWiki(){
+
+      $.ajax({
+        type: 'get',
+        dataType: 'jsonp',
+        url: 'http://ja.wikipedia.org/w/api.php?action=query&format=json&titles=' + ns.countryList[ ns.nextNum ].name + 'の国旗&prop=extracts&redirects=1&exchars=120&explaintext=1',
+        success: function( result ){
+          for( var j in result.query.pages ){
+            if( result.query.pages.hasOwnProperty(j) && result.query.pages[j].extract ){
+
+              $countryFlagWiki.
+                css({
+                  width: winWidth / 2,
+                  height: winHeight / 2
+                }).
+                text( result.query.pages[j].extract ).
+                addClass( 'show' );
+              break;
+
+            }
+          }
+        }
+      });
+
     }
   };
 
-	global.kokki = ns;
+  global.kokki = ns;
 })(this, document, jQuery, this.kokki);
