@@ -4,7 +4,7 @@
 
   var originalConstructor;
   var instance;
-  var url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0401edc0e96db4b374f30c94c10e9350&place_id=#{place_id}&format=json';
+  var url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6c91ca1e147aafc84b8f0047781440eb&place_id=#{place_id}&format=json';
 
   /*
   *  @param {string} id
