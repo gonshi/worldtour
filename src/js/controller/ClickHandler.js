@@ -19,9 +19,11 @@
 
   ClickHandler.prototype.exec = function(){
     var that = this;
-    var layers = [$('.firstLayer'),
-                  $('.secondLayer'),
-                  $('.thirdLayer')];
+    var layers = [
+      $('.firstLayer'),
+      $('.secondLayer'),
+      $('.thirdLayer')
+    ];
     var i;
 
     for( i = 0; i < layers.length; i++ ){

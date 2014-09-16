@@ -25,6 +25,8 @@
     var left;
     var newImg = [];
     var imgHeight = [];
+    var maxHeight = 0;
+    var loadedCount = 0;
 
     var setImgTop = function( i ){
       var j;
@@ -33,16 +35,24 @@
 
       imgHeight[ i ] = newImg[ i ].height * ( photoWidth / newImg[ i ].width );
 
-      for( j = start; j < photosLength; j += maxColumnNum ){
-        sumHeight += imgHeight[ j ] + photoMargin;
+      for ( j = start; j < photosLength; j += maxColumnNum ){
+        if( !isNaN( imgHeight[ j ] ) ){
+          sumHeight += imgHeight[ j ] + photoMargin;
+        }
 
-        if( j < photosLength - maxColumnNum ){
+        if ( j < photosLength - maxColumnNum ){
           $( '.photo' ).eq( j + maxColumnNum ).css({ top: sumHeight });
         }
       }
 
-      if( sumHeight > parseInt( $photoContainer.css( 'height' ) ) ){
-        $photoContainer.css({ height: sumHeight });
+      if ( sumHeight > maxHeight ){
+        maxHeight = sumHeight;
+      }
+
+      loadedCount += 1;
+      if ( loadedCount === photosLength ){
+        $photoContainer.css({ height: maxHeight });
+        window.scrollTo(0, 0);
       }
     };
 
