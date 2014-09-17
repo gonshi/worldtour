@@ -8,6 +8,8 @@
   ].join("");
   var photoSrcTmpl = 'https://farm#{farm}.staticflickr.com/#{server}/#{id}_#{secret}_n.jpg'; 
   var $photoContainer = $( '.photoContainer' );
+  var $loader = $( '.loader' );
+  var $moreBtn = $( '.moreBtn' );
 
   /*
    * @param {Object}photos
@@ -52,7 +54,8 @@
       loadedCount += 1;
       if ( loadedCount === photosLength ){
         $photoContainer.css({ height: maxHeight + 100, marginTop: 100 });
-        $( '.moreBtn' ).css({ display: 'block' });
+        $moreBtn.addClass( 'show' );
+        $loader.removeClass( 'show' );
         window.scrollTo(0, 0);
       }
     };
@@ -69,6 +72,7 @@
         replace( '#{secret}', photos[ i ].secret ); 
     };
 
+    $loader.addClass( 'show' );
     for ( i = 0; i < photosLength; i++ ){
       imageLoader( i );
 
