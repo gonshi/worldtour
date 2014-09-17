@@ -40,8 +40,8 @@
     $countryName.text( '' );
     $countryFlagWiki.text( '' );
     $photoContainer.empty().css({ height: 0, marginTop: 0 });
-    $moreBtn.css({ display: 'none' });
-    $filter.css({ opacity: 0.3 });
+    $moreBtn.removeClass( 'show' );
+    $filter.removeClass( 'hide' );
     $layers.removeClass( 'selected' );
     window.scrollTo(0, 0);
   };
