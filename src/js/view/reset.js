@@ -4,11 +4,13 @@
   var $photoContainer = $( '.photoContainer' );
   var $countryName = $( '.countryName' );
   var $countryFlagWiki = $( '.countryFlagWiki .sentence' );
+  var $filter = $( '#filter' );
   var $map = $( '#map' );
   var $slot = $( '.slot' );
   var $flag = $( '.flag' );
   var $flagImg = $( '.flag img' );
   var $moreBtn = $( '.moreBtn' );
+  var $layers = $( '.firstLayer, .secondLayer, .thirdLayer' );
 
   ns.reset = function(){
     $flag.attr({ src: 'img/flag/white.jpg' });
@@ -39,6 +41,8 @@
     $countryFlagWiki.text( '' );
     $photoContainer.empty().css({ height: 0, marginTop: 0 });
     $moreBtn.css({ display: 'none' });
+    $filter.css({ opacity: 0.3 });
+    $layers.removeClass( 'selected' );
     window.scrollTo(0, 0);
   };
 

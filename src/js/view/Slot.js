@@ -76,14 +76,12 @@
       }
     }
     _animationLayer = animationLayer[layerNum];
-    console.log( _animationLayer );
-    console.log( layerNum );
 
     animationLayer.splice(layerNum, 1);
     layerLength--;
 
-    _animationLayer.addClass('selected');
-    _animationLayer.css({ 'background-color': '#' + ns.countryList[ns.nextNum].color[ layers.indexOf(className) ] });
+    _animationLayer.addClass( 'selected' );
+    _animationLayer.css({ 'background-color': '#' + ns.countryList[ ns.nextNum ].color[ layers.indexOf(className) ] });
 
     // slot has finished
     if( layerLength === 0 ){

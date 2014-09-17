@@ -6,7 +6,7 @@
       '<img src="${photoSrc}" alt="写真">',
     '</p>'
   ].join("");
-  var photoSrcTmpl = 'https://farm#{farm}.staticflickr.com/#{server}/#{id}_#{secret}_z.jpg'; 
+  var photoSrcTmpl = 'https://farm#{farm}.staticflickr.com/#{server}/#{id}_#{secret}_n.jpg'; 
   var $photoContainer = $( '.photoContainer' );
 
   /*
@@ -16,7 +16,7 @@
   ns.showPhotos = function( photos ){
     var i = 0;
     //var photosLength = photos.length;
-    var photosLength = 25;
+    var photosLength = 20;
     var maxColumnNum = 3;
     var columnNum;
     var photoMargin = $(window).width() * 0.025;
