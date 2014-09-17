@@ -3,7 +3,7 @@
   ns = ns || {};
 
   var originalConstructor;
-  var  instance;
+  var instance;
 
   /*
   *  @param {}
@@ -17,7 +17,7 @@
   ClickHandler.prototype = new ns.EventDispatcher();
   ClickHandler.prototype.constructor = originalConstructor;
 
-  ClickHandler.prototype.exec = function(){
+  ClickHandler.prototype.layer = function(){
     var that = this;
     var layers = [
       $('.firstLayer'),
@@ -35,6 +35,14 @@
         that.fireEvent('STOP', that, $(this).attr('class') );
       });
     }
+  };
+
+
+  ClickHandler.prototype.reset = function(){
+    var that = this;
+    $( '.moreBtn' ).on( 'click', function(){
+      that.fireEvent( 'RESET' );
+    });
   };
 
   ClickHandler.getInstance = function() {

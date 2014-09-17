@@ -6,7 +6,7 @@
       '<img src="${photoSrc}" alt="写真">',
     '</p>'
   ].join("");
-  var photoSrcTmpl = 'https://farm#{farm}.staticflickr.com/#{server}/#{id}_#{secret}_n.jpg'; 
+  var photoSrcTmpl = 'https://farm#{farm}.staticflickr.com/#{server}/#{id}_#{secret}_z.jpg'; 
   var $photoContainer = $( '.photoContainer' );
 
   /*
@@ -16,7 +16,7 @@
   ns.showPhotos = function( photos ){
     var i = 0;
     //var photosLength = photos.length;
-    var photosLength = 40;
+    var photosLength = 25;
     var maxColumnNum = 3;
     var columnNum;
     var photoMargin = $(window).width() * 0.025;
@@ -51,7 +51,8 @@
 
       loadedCount += 1;
       if ( loadedCount === photosLength ){
-        $photoContainer.css({ height: maxHeight });
+        $photoContainer.css({ height: maxHeight + 100, marginTop: 100 });
+        $( '.moreBtn' ).css({ display: 'block' });
         window.scrollTo(0, 0);
       }
     };

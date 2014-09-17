@@ -4,8 +4,10 @@
 		"/js/model/GetCountryData.js",
 		"/js/model/GetFlickrData.js",
 		"/js/controller/ClickHandler.js",
+		"/js/controller/ResizeHandler.js",
 		"/js/view/Slot.js",
 		"/js/view/showCountryContents.js",
 		"/js/view/showPhotos.js",
+		"/js/view/reset.js",
     "/js/main.js"
 ]

@@ -7,17 +7,25 @@
     var getFlickrData = ns.GetFlickrData.getInstance();
     var slot = ns.Slot.getInstance(10); // param is interval
     var clickHandler = ns.ClickHandler.getInstance();
+    var resizeHandler = ns.ResizeHandler.getInstance();
 
     // get country data from spread sheet
     global.gdata.io.handleScriptLoaded.prototype.addEventListener( 'LOADED', function(){
-      slot.exec();
       setNext();
+      slot.exec();
     });
     ////////////////////////////////////
     
     // click handler
     clickHandler.addEventListener( 'STOP', function( className ){
       slot.stop( className );
+    });
+
+    clickHandler.addEventListener( 'RESET', function(){
+      ns.reset();
+      ns.countryList.splice( ns.nextNum, 1 );
+      setNext();
+      slot.reset();
     });
     //////////////////////
 
@@ -33,7 +41,9 @@
       ns.showPhotos( photos );
     });
     getCountryData.exec();
-    clickHandler.exec();
+    clickHandler.layer();
+    clickHandler.reset();
+    resizeHandler.exec();
 
     function setNext(){
       ns.nextNum = Math.floor( Math.random() * ns.countryList.length );

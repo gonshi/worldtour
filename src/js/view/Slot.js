@@ -3,14 +3,15 @@
   ns = ns || {};  
 
   var originalConstructor;
-  var  instance;
+  var instance;
   var $flagImg = $('.flag').find('img');
-  var  animationLayer =  [
+  var animationLayer =  [
     $('.firstLayer'),
     $('.secondLayer'),
     $('.thirdLayer')
   ];
   var layerLength = animationLayer.length; 
+  var $filter = $( '#filter' );
 
   /*
   *  @param {number} interval 
@@ -75,12 +76,14 @@
       }
     }
     _animationLayer = animationLayer[layerNum];
+    console.log( _animationLayer );
+    console.log( layerNum );
 
     animationLayer.splice(layerNum, 1);
     layerLength--;
 
     _animationLayer.addClass('selected');
-    _animationLayer.css({ 'background-color': '#' + ns.countryList[ns.nextNum].color[layers.indexOf(className)] });
+    _animationLayer.css({ 'background-color': '#' + ns.countryList[ns.nextNum].color[ layers.indexOf(className) ] });
 
     // slot has finished
     if( layerLength === 0 ){
@@ -107,8 +110,18 @@
     function imageLoaded(){
       setTimeout(function(){
         that.fireEvent('SLOT_FINISHED', that, newImgWidth, newImgHeight);
+        $filter.addClass( 'hide' );
       }, waitTime); 
     }
+  };
+
+  Slot.prototype.reset = function(){
+    animationLayer =  [
+      $('.firstLayer'),
+      $('.secondLayer'),
+      $('.thirdLayer')
+    ];
+    layerLength = animationLayer.length; 
   };
 
   Slot.getInstance = function(interval) {
