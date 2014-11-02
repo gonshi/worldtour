@@ -3,6 +3,7 @@
 	position: relative;
   width: 100%;
   height: 100%;
+  background: #fafafa;
 }
 
 #filter{
@@ -66,12 +67,30 @@
 	width: 100%;
 	height: 100%;
 	.firstLayer, .secondLayer, .thirdLayer{
+    position: relative;
 		width: 100%;
 		height: 33.3%;
 		cursor: pointer;
 		&.selected{
 			cursor: auto;
 		}
+
+    .stop button{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 300px;
+      height: 80px;
+      margin: auto;
+      color: #fff;
+      font-size: 32px;
+      text-shadow: 2px 0px 0px #4d4d4d, -1.74661px -0.97435px 0px #4d4d4d, 1.05064px 1.70181px 0px #4d4d4d, -0.08846px -1.99804px 0px #4d4d4d, -0.89615px 1.78799px 0px #4d4d4d, 1.65367px -1.12488px 0px #4d4d4d, -1.99218px 0.17674px 0px #4d4d4d, 1.82588px 0.81619px 0px #4d4d4d, -1.19692px -1.60231px 0px #4d4d4d, 0.26467px 1.98241px 0px #4d4d4d, 0.73464px -1.86019px 0px #4d4d4d, -1.5478px 1.26662px 0px #4d4d4d, 1.96876px -0.35209px 0px #4d4d4d, -1.89086px -0.65165px 0px #4d4d4d, 1.33383px 1.49027px 0px #4d4d4d, -0.43882px -1.95127px 0px #4d4d4d, -0.56738px 1.91783px 0px #4d4d4d;
+      &.delete{
+        @include animation( delete 0.5s ease 0s forwards );
+      }
+    }
 	}
 }
 ///////////////
@@ -84,12 +103,18 @@
   width: 50%;
   height: 50%;
   font-size: 60px;
-  text-align: center;
-	opacity: 0;
 	@include single-transition(opacity, 0.5s, ease, 0s);
-	&.show{
-		opacity: 1;
-	}
+
+  .text{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    opacity: 0;
+
+    &.show{
+      opacity: 1;
+    }
+  }
 }
 /////////////////
 
@@ -119,6 +144,7 @@
 /////////////////
 
 .loader{
+  display: none;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -129,11 +155,9 @@
   font-size: 64px;
   letter-spacing: 8px;
   color: transparent;
-  opacity: 0;
-  @include single-transition( opacity, 0.5s, ease, 0s );
 
   &.show{
-    opacity: 1;
+    display: block;
   }
 
   span{
@@ -146,6 +170,22 @@
       0 3px 4px rgba(255, 255, 255, 0.2),
       0 0 20px rgba(255, 255, 255, 0.45);
     @include animation(loading 0.85s ease-in-out infinite alternate);
+  }
+}
+
+.arrow{
+  display: none;
+  position: fixed;
+  right: 0;
+  bottom: 40px;
+  left: 0;
+  width: 120px;
+  margin: auto;
+  z-index: $zFloat;
+  @include animation( arrowMove 0.75s linear 0s alternate infinite );
+
+  img{
+    width: 120px;
   }
 }
 
@@ -208,7 +248,7 @@
   bottom: 20px;
   left: 0;
   right: 0;
-  margin: 0;
+  margin: 0 0 100px;
   text-align: center;
 
   &.show{
@@ -219,7 +259,37 @@
     padding: 5px 30px;
     font-size: 32px;
     color: #fff;
-    background: #000;
-    border-radius: 30px;
+    text-shadow: 2px 0px 0px #4d4d4d, -1.74661px -0.97435px 0px #4d4d4d, 1.05064px 1.70181px 0px #4d4d4d, -0.08846px -1.99804px 0px #4d4d4d, -0.89615px 1.78799px 0px #4d4d4d, 1.65367px -1.12488px 0px #4d4d4d, -1.99218px 0.17674px 0px #4d4d4d, 1.82588px 0.81619px 0px #4d4d4d, -1.19692px -1.60231px 0px #4d4d4d, 0.26467px 1.98241px 0px #4d4d4d, 0.73464px -1.86019px 0px #4d4d4d, -1.5478px 1.26662px 0px #4d4d4d, 1.96876px -0.35209px 0px #4d4d4d, -1.89086px -0.65165px 0px #4d4d4d, 1.33383px 1.49027px 0px #4d4d4d, -0.43882px -1.95127px 0px #4d4d4d, -0.56738px 1.91783px 0px #4d4d4d;
+  }
+}
+
+#footer{
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  width: 200px;
+  margin: auto;
+  text-align: center;
+
+  &.show{
+    display: block;
+  }
+
+  .copyright{
+    margin: 10px auto;
+  }
+
+  .social{
+    @include clearfix;
+  }
+
+  .twitter{
+    float: left;
+  }
+
+  .fb-like{
+    float: right;
   }
 }

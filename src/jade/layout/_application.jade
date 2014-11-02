@@ -18,6 +18,8 @@ html(lang='ja')
   body
     block body
   block scripts
+    include /include/script/_twitter
+    include /include/script/_facebook
     each val in libs
       script(src=val)
     if prod

@@ -18,6 +18,8 @@
     
     // click handler
     clickHandler.addEventListener( 'STOP', function( className ){
+      $( '.slot .' + className ).find( '.stop button' ).
+        addClass( 'delete' );
       slot.stop( className );
     });
 
@@ -40,6 +42,8 @@
     getFlickrData.addEventListener( 'PHOTO_LOADED', function( photos ){
       ns.showPhotos( photos );
     });
+
+    // INIT
     getCountryData.exec();
     clickHandler.layer();
     clickHandler.reset();

@@ -32,7 +32,9 @@
 
     function layerClick(i){
       layers[i].on('click', function(){
-        that.fireEvent('STOP', that, $(this).attr('class') );
+        if( !$(this).hasClass('selected') ){
+          that.fireEvent('STOP', that, $(this).attr('class') );
+        }
       });
     }
   };

@@ -9,7 +9,9 @@
   var photoSrcTmpl = 'https://farm#{farm}.staticflickr.com/#{server}/#{id}_#{secret}_n.jpg'; 
   var $photoContainer = $( '.photoContainer' );
   var $loader = $( '.loader' );
+  var $arrow  = $( '.arrow' );
   var $moreBtn = $( '.moreBtn' );
+  var $footer  = $( '#footer' );
 
   /*
    * @param {Object}photos
@@ -53,10 +55,23 @@
 
       loadedCount += 1;
       if ( loadedCount === photosLength ){
-        $photoContainer.css({ height: maxHeight + 100, marginTop: 100 });
-        $moreBtn.addClass( 'show' );
+        $photoContainer.css({ height: maxHeight + 200, marginTop: 100 });
         $loader.removeClass( 'show' );
-        window.scrollTo(0, 0);
+        $arrow.show();
+        $footer.addClass( 'show' );
+
+        if( ns.countryList.length > 1 ){
+          $moreBtn.addClass( 'show' );
+        }
+
+        window.scrollTo(0, 1);
+
+        $( window ).on( 'scroll', function(){
+          if ( $( window ).scrollTop() > 100 ){
+            $( window ).off( 'scroll' );
+            $arrow.hide();
+          }
+        } );
       }
     };
 

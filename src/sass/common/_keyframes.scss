@@ -1,0 +1,21 @@
+@include keyframes( delete ){
+  0%{
+    @include scale( 1 );
+  }
+  30%{
+    @include scale( 1.2 );
+  }
+  100%{
+    @include scale( 0 );
+  }
+}
+
+@include keyframes( arrowMove ){
+  from{
+    bottom: 40px;
+  }
+
+  to{
+    bottom: 10px;
+  }
+}
