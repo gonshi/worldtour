@@ -226,6 +226,13 @@
   @include animation-delay(0.90s);
 }
 
+.photoTitle{
+  display: none;
+  margin: 40px 0;
+  text-align: center;
+  font-size: 32px;
+}
+
 // photoContainer
 .photoContainer{
   position: relative;
@@ -238,6 +245,12 @@
 
     img{
       width: 100%;
+    }
+
+    .photo_copyright{
+      position: absolute;
+      right: 0;
+      bottom: -20px;
     }
   }
 }
@@ -269,7 +282,7 @@
   right: 0;
   bottom: 10px;
   left: 0;
-  width: 200px;
+  width: 250px;
   margin: auto;
   text-align: center;
 
@@ -287,9 +300,11 @@
 
   .twitter{
     float: left;
+    width: auto !important;
   }
 
   .fb-like{
     float: right;
+    width: auto !important;
   }
 }

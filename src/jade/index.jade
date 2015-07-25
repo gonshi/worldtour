@@ -1,6 +1,6 @@
 extends /layout/_application
 block title
-  title 
+  title RGB TOUR 
 block body
   #wrapper
     div.slotContainer
@@ -38,6 +38,7 @@ block body
       button
         img(src="img/arrow.png" alt="下へ")
 
+    p.photoTitle
     div.photoContainer
     p.moreBtn
       button もう一度遊ぶ
@@ -46,5 +47,5 @@ block body
         a(href="https://twitter.com/gonshi_com" target="_blank") &copy; gonshi
       div.social
         p.twitter
-          a.twitter-share-button(href="https://twitter.com/share" data-lang="ja" data-text="RGB TOUR｜世界は3色でできている！？" data-count="none") ツイート
+          a.twitter-share-button(href="https://twitter.com/share" data-lang="ja" data-text="RGB TOUR｜世界は3色でできている！？") ツイート
         div.fb-like(data-href="http://gonshi.github.io/rgb-tour/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false")

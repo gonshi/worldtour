@@ -2,6 +2,7 @@
   'use strict';
   ns = ns || {};
   var $photoContainer = $( '.photoContainer' );
+  var $photoTitle = $( '.photoTitle' );
   var $countryName = $( '.countryName .text' );
   var $countryFlagWiki = $( '.countryFlagWiki .sentence' );
   var $filter = $( '#filter' );
@@ -44,6 +45,7 @@
     $countryName.text( '' );
     $countryFlagWiki.text( '' );
     $photoContainer.empty().css({ height: 0, marginTop: 0 });
+    $photoTitle.text( '' ).hide();
     $moreBtn.removeClass( 'show' );
     $footer.removeClass( 'show' );
     $filter.removeClass( 'hide' );

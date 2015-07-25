@@ -183,9 +183,7 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
 
   var originalConstructor;
   var instance;
-  var url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6c91ca1e147aafc84b8f0047781440eb&sort=interestingness-desc&place_id=#{place_id}&format=json';
-
-
+  var url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6c91ca1e147aafc84b8f0047781440eb&sort=interestingness-desc&place_id=#{place_id}&format=json&licence=1,2,3,4,5,6';
 
   /*
   *  @param {string} id
@@ -262,7 +260,9 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
 
     function layerClick(i){
       layers[i].on('click', function(){
-        that.fireEvent('STOP', that, $(this).attr('class') );
+        if( !$(this).hasClass('selected') ){
+          that.fireEvent('STOP', that, $(this).attr('class') );
+        }
       });
     }
   };
@@ -464,7 +464,7 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
   var $slot = $('.slot');
   var $flag = $('.flag');
   var $flagImg = $flag.find('img');
-  var $countryName = $('.countryName');
+  var $countryName = $('.countryName .text');
   var $countryFlagWiki = $('.countryFlagWiki .sentence');
 
   /*
@@ -522,7 +522,15 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
       var mapOptions = {
         center: latlng,
         zoom: 3,
-        mapTypeId: global.google.maps.MapTypeId.ROADMAP
+        mapTypeId: global.google.maps.MapTypeId.ROADMAP,
+        panControl: false,
+        zoomControl: false,
+        scaleControl: false,
+        overviewMapControl: false,
+        streetViewControl : false,
+        mapTypeControl    : false,
+        draggable         : false,
+        disableDefaultUI  : true,
       };
       var map = new global.google.maps.Map(document.getElementById("map"), mapOptions);
       $('#map').addClass('show');
@@ -541,7 +549,10 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
 
     function showCountryName(){
       $countryName.
-        css({ 'line-height': ( winHeight / 2 ) + 'px' }).
+        css( {
+          width: winWidth / 2,
+          height: winHeight / 2
+        } ).
         text( ns.countryList[ ns.nextNum ].name ).
         addClass('show');
     }
@@ -580,14 +591,24 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
   'use strict';
   ns = ns || {};
   var photoTmpl = [ 
-    '<p class="photo">',
-      '<img src="${photoSrc}" alt="写真">',
-    '</p>'
+    '<div class="photo">',
+      '<p>',
+        '<img src="${photoSrc}" alt="写真">',
+      '</p>',
+      '<p class="photo_copyright">',
+        '<a href="https://www.flickr.com/photos/${copyright}" target="_blank">',
+          '&copy;${copyright}',
+        '</a>',
+      '</p>',
+    '</div>'
   ].join("");
   var photoSrcTmpl = 'https://farm#{farm}.staticflickr.com/#{server}/#{id}_#{secret}_n.jpg'; 
   var $photoContainer = $( '.photoContainer' );
+  var $photoTitle = $( '.photoTitle' );
   var $loader = $( '.loader' );
+  var $arrow  = $( '.arrow' );
   var $moreBtn = $( '.moreBtn' );
+  var $footer  = $( '#footer' );
 
   /*
    * @param {Object}photos
@@ -596,7 +617,7 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
   ns.showPhotos = function( photos ){
     var i = 0;
     //var photosLength = photos.length;
-    var photosLength = 20;
+    var photosLength = 40;
     var maxColumnNum = 3;
     var columnNum;
     var photoMargin = $(window).width() * 0.025;
@@ -631,10 +652,23 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
 
       loadedCount += 1;
       if ( loadedCount === photosLength ){
-        $photoContainer.css({ height: maxHeight + 100, marginTop: 100 });
-        $moreBtn.addClass( 'show' );
+        $photoContainer.css({ height: maxHeight + 200 });
+        $photoTitle.text( ns.countryList[ ns.nextNum ].name + 'の風景' ).show();
         $loader.removeClass( 'show' );
-        window.scrollTo(0, 0);
+        $arrow.show();
+        $footer.addClass( 'show' );
+
+        if( ns.countryList.length > 1 ){
+          $moreBtn.addClass( 'show' );
+        }
+        window.scrollTo(0, 1);
+
+        $( window ).on( 'scroll', function(){
+          if ( $( window ).scrollTop() > 100 ){
+            $( window ).off( 'scroll' );
+            $arrow.hide();
+          }
+        } );
       }
     };
 
@@ -647,7 +681,7 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
         replace( '#{farm}', photos[ i ].farm ). 
         replace( '#{server}', photos[ i ].server ). 
         replace( '#{id}', photos[ i ].id ). 
-        replace( '#{secret}', photos[ i ].secret ); 
+        replace( '#{secret}', photos[ i ].secret );
     };
 
     $loader.addClass( 'show' );
@@ -668,7 +702,8 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
       }
       ////////////////////////////
 
-      photoDOM = photoTmpl.replace( '${photoSrc}', newImg[ i ].src );
+      photoDOM = photoTmpl.replace( '${photoSrc}', newImg[ i ].src ).
+                           replace( /\${copyright}/g, photos[ i ].owner );
 
       $( photoDOM ).
         css({ left: left, width: photoWidth }).
@@ -683,7 +718,8 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
   'use strict';
   ns = ns || {};
   var $photoContainer = $( '.photoContainer' );
-  var $countryName = $( '.countryName' );
+  var $photoTitle = $( '.photoTitle' );
+  var $countryName = $( '.countryName .text' );
   var $countryFlagWiki = $( '.countryFlagWiki .sentence' );
   var $filter = $( '#filter' );
   var $map = $( '#map' );
@@ -692,6 +728,7 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
   var $flagImg = $( '.flag img' );
   var $moreBtn = $( '.moreBtn' );
   var $layers = $( '.firstLayer, .secondLayer, .thirdLayer' );
+  var $footer = $( '#footer' );
 
   ns.reset = function(){
     $flag.attr({ src: 'img/flag/white.jpg' });
@@ -717,11 +754,16 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
       }).
       attr({ src: 'img/flag/white.jpg' });
 
+    $( '.slot').find( '.stop button' ).
+      removeClass( 'delete' );
+
     $map.empty();
     $countryName.text( '' );
     $countryFlagWiki.text( '' );
     $photoContainer.empty().css({ height: 0, marginTop: 0 });
+    $photoTitle.text( '' ).hide();
     $moreBtn.removeClass( 'show' );
+    $footer.removeClass( 'show' );
     $filter.removeClass( 'hide' );
     $layers.removeClass( 'selected' );
     window.scrollTo(0, 0);
@@ -750,6 +792,8 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
     
     // click handler
     clickHandler.addEventListener( 'STOP', function( className ){
+      $( '.slot .' + className ).find( '.stop button' ).
+        addClass( 'delete' );
       slot.stop( className );
     });
 
@@ -772,6 +816,8 @@ gdata.io.handleScriptLoaded.prototype.constructor = originalConstructor;
     getFlickrData.addEventListener( 'PHOTO_LOADED', function( photos ){
       ns.showPhotos( photos );
     });
+
+    // INIT
     getCountryData.exec();
     clickHandler.layer();
     clickHandler.reset();

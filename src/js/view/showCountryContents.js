@@ -62,7 +62,15 @@
       var mapOptions = {
         center: latlng,
         zoom: 3,
-        mapTypeId: global.google.maps.MapTypeId.ROADMAP
+        mapTypeId: global.google.maps.MapTypeId.ROADMAP,
+        panControl: false,
+        zoomControl: false,
+        scaleControl: false,
+        overviewMapControl: false,
+        streetViewControl : false,
+        mapTypeControl    : false,
+        draggable         : false,
+        disableDefaultUI  : true,
       };
       var map = new global.google.maps.Map(document.getElementById("map"), mapOptions);
       $('#map').addClass('show');
